@@ -1,11 +1,13 @@
 cmake_minimum_required(VERSION 3.7)
 
-project(eris VERSION 5.2.5)
+set(CMAKE_INSTALL_PREFIX "${CMAKE_CURRENT_BINARY_DIR}/inst/") # For testing
+
+project(eris VERSION 5.2.7)
 
 # Find all source files
 file(GLOB_RECURSE ERIS_SRCS
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp"
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/*.c"
+    "eris/*.cpp"
+    "eris/*.c"
     RELATIVE_PATH
 )
 
@@ -13,7 +15,7 @@ file(GLOB_RECURSE ERIS_SRCS
 # file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/res/" DESTINATION "${CMAKE_BINARY_DIR}/res/spaceship")
 
 add_library(eris ${ERIS_SRCS})
-target_include_directories(eris PUBLIC "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>")
+target_include_directories(eris PUBLIC "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/eris>")
 target_compile_definitions(eris PRIVATE _WIN32_WINNT=0x0501)
 
 
@@ -51,7 +53,7 @@ install(
 
 # Headers
 install(
-    DIRECTORY "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>"
+    DIRECTORY "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/eris>"
     DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}"
     # FILES_MATCHING PATTERN "*.hpp"
 )
