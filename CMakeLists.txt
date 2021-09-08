@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.7)
 
-project(eris VERSION 5.2.4)
+project(eris VERSION 5.2.5)
 
 # Find all source files
 file(GLOB_RECURSE ERIS_SRCS
@@ -13,7 +13,7 @@ file(GLOB_RECURSE ERIS_SRCS
 # file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/res/" DESTINATION "${CMAKE_BINARY_DIR}/res/spaceship")
 
 add_library(eris ${ERIS_SRCS})
-target_include_directories(eris PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src/)
+target_include_directories(eris PUBLIC "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>")
 target_compile_definitions(eris PRIVATE _WIN32_WINNT=0x0501)
 
 
