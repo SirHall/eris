@@ -1,8 +1,6 @@
 cmake_minimum_required(VERSION 3.7)
 
-set(CMAKE_INSTALL_PREFIX "${CMAKE_CURRENT_BINARY_DIR}/inst/") # For testing
-
-project(eris VERSION 5.2.9)
+project(eris VERSION 5.2.10)
 
 # Find all source files
 file(GLOB_RECURSE ERIS_SRCS
